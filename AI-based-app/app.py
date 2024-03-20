@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, url_for
 import csv
 import os
 
@@ -26,7 +26,7 @@ def login_post():
     username = request.form['username']
     password = request.form['password']
     if check_credentials(username, password):
-        return redirect('/index')  # Redirect to index page on successful login
+        return redirect(url_for('index', username=username))  # 传递用户名
     else:
         return "Invalid username or password!"
 
@@ -43,7 +43,8 @@ def register():
 
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    username = request.args.get('username', '')
+    return render_template('index.html', username=username)
 
 if __name__ == '__main__':
     if not os.path.exists('credentials.csv'):

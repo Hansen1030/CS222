@@ -13,11 +13,20 @@
         <h1 class="text-4xl font-bold mb-8 text-center">
             Streaming OpenAI API Completions in JavaScript
         </h1>
+
+        {% if username %}
+            <p class="text-xl font-semibold text-center mt-4">Hello, {{ username }}</p>
+        {% else %}
+            <p class="text-xl font-semibold text-center mt-4">Hello, Guest</p>
+        {% endif %}
+
         <div id="resultContainer" class="mt-4 h-48 overflow-y-auto p-4 bg-gray-50 border border-gray-200 rounded">
             <p class="text-gray-600 text-sm mb-2">Generated Text</p>
             <p id="resultText" class="whitespace-pre-line"></p>
         </div>
+
         <input type="text" id="promptInput" class="w-full px-4 py-3 mt-6 rounded-md bg-white border border-gray-300 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Enter prompt..."/>
+
         <div class="flex justify-center mt-6 space-x-4">
             <button id="generateBtn" class="w-1/2 px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">
                 Generate
